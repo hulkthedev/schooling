@@ -1,0 +1,52 @@
+<HTML>
+ <HEAD><TITLE>JavaScript Testseite</TITLE></HEAD>
+  <BODY>  	
+   <script language="JavaScript" type="text/javascript">
+    function doIt()
+    {    		
+				if(document.getElementsByName("getAlter")[0].value < 18)
+				{
+					 document.zugang.ne.checked = true;
+					 document.zugang.yes.checked = false;
+				}
+				if(document.getElementsByName("getAlter")[0].value >= 18)
+				{
+					 document.zugang.jo.checked = true;
+					 document.zugang.no.checked = false;
+				}
+				if(document.getElementsByName("getAlter")[0].value <= 0 || document.getElementsByName("getAlter")[0].value == "")
+				{
+					document.zugang.yes.checked = false;
+					document.zugang.no.checked = false;
+					document.zugang.count.value++;
+				}
+				if(document.zugang.count.value == 3)
+				{
+					document.zugang.yes.type = 'hidden';
+					document.zugang.no.type = 'hidden';
+					document.alter.getAlter.type = 'hidden';
+					document.alter.ok.type = 'hidden';
+					document.getElementById("yes_1").fgColor = "#FF0000";
+					document.getElementById("no_1").fgColor = "#FF0000";
+					document.write("<center><h1>Was hast du nun davon!</h1></center>");
+				}
+				alert("Verarsch-Versuche #" + document.zugang.count.value + "/3");
+    }
+   </script>
+
+   <center>
+    <form name="alter">
+     Ihr Alter: <input type="text" name="getAlter">
+     <input type="button" name="ok" value="OK" onclick="doIt()">
+    </form>
+        
+    
+    <form name="zugang">
+			<input type="checkbox" name="yes" id="jo"><div id="yes_1">Erlaubt!</div><br>
+			<input type="checkbox" name="no"  id="ne"><div id="no_1">Verboten!</div>
+			<input type="hidden"   name="count"  value="0">
+    </form>
+   </center>
+
+  </BODY>
+</HTML>

@@ -1,0 +1,32 @@
+<html>
+ <head><title>Übung 2</title><head>
+  <body>
+   
+   <script type="text/javascript">
+ 	    	
+    	function move_text()
+	{    			
+    	  document.getElementById("wo").style.left = document.getElementById("count").value + "%";    			
+    	  document.getElementById("count").value++;    		
+    	}
+
+	function wahl(nr)
+	{
+		alert(nr);
+	} 	  
+   </script> 
+  
+   <div style="position:absolute; left:0%; name="wo" id="wo">Hier bin ich!</div><br><br>
+   <div align="center"><input type="button" name="move1" id="move1" value="Bewege Text Links"  onClick="move_text()">
+   		       <input type="hidden" name="count" id="count" value="0">
+
+
+
+	<div name="box" id="box" align="center" style="width:400px; height:400px; margin-top:40px; border:2px solid red;">
+		<input type="radio" name="wahl" id="wahl" vlaue="1" onCLick="javascript:wahl(1);">
+		<input type="radio" name="wahl" id="wahl" vlaue="2" onCLick="javascript:wahl(2);">
+		<input type="radio" name="wahl" id="wahl" vlaue="3" onCLick="javascript:wahl(3);"><br>
+	</div>
+  	
+  </body>
+</html>

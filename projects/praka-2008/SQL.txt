@@ -1,0 +1,16 @@
+gate:
+ID (auto), name, pass
+
+
+Artikel:
+ID (auto), Bezeichnung, Lagerbestand, Einkaufspreis, Verkaufspreis, Versand,
+
+
+
+Kunde:
+ID (auto), Name, Vorname, Strasse, PLZ, Ort, Land, eMail, Rechnungsnrummer (auto), 
+ 
+
+
+Commerce:
+Rechnungsnrummer (auto), Menge, Verkaufspreis, Buchung

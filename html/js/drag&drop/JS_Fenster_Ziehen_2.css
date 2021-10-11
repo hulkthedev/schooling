@@ -1,0 +1,26 @@
+
+body {background-color:yellow}
+#Hinweis {display:block;border:1px solid red;margin:auto}
+#Notiz {display:block;border:1px solid blue;margin:auto}
+button {background-color:red}
+.infodiv, #infodiv {background-color:pink;margin:1em;padding:1em;}
+span.code {font-family:Courier;color:blue;}
+
+#Feld0, #Feld1 {background-color:pink;
+		border:1px solid green;
+		width:50px;
+		margin:0px 15px;
+	}
+	
+.infodiv, #infodiv {
+	background-color:red;
+	border:10px solid green;
+	width:300px;
+	text-align:center;
+	font-size:1.5em;
+	position:absolute;
+	left:300px;
+	top:150px;
+}
+Name1, Name2 {border:1px solid brown};
+	

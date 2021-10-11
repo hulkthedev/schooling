@@ -1,0 +1,91 @@
+<html>
+ <head>
+  <title>Pinwand | 1.0</title>
+  <script type="text/javascript">
+    function init() {
+	if(navigator.appName.indexOf("Microsoft Internet Explorer") != -1) alert("Im Internet Explorer wird das Pin (das rote Kästchen) komisch dargestellt.\nGuck dir diese Seite lieber mit dem FireFox an.\n\nHau rein\nAlex")
+    }
+
+    /*
+    |- leftVon -------- leftBis -|
+   
+    +----------------------------+  -+-
+    |                            |   |
+    |                            |   topVon
+    |                            |   |
+    |                            |   |
+    |                            |   |
+    |                            |   |
+    |         BILD (MAP)         |   |
+    |                            |   |
+    |                            |   |
+    |                            |   |
+    |                            |   |
+    |                            |   |
+    |                            |   topBis
+    |                            |   |
+    +----------------------------+  -+-
+    */
+	var topVon = 0;
+	var topBis = 0;
+	var leftVon = 0;
+	var leftBis = 0;
+	var dummy = 0; // Zwischenspeicher
+
+	function Mausklick(Ereignis) {
+	  /* Wenn Ereignis nicht vorhanden */
+	  if(!Ereignis) Ereignis = window.event;
+	  /* Internet Explorer */
+	  if(document.all) {
+		topVon = document.all.mapFrame.offsetLeft;
+		dummy = document.all.mapFrame.style.width.replace("px","");
+		topBis = parseInt(topVon) + parseInt(dummy);
+		leftVon = document.all.mapFrame.offsetTop;
+		dummy = document.all.mapFrame.style.height.replace("px","");
+		leftBis = parseInt(leftVon) + parseInt(dummy);
+		// alert("X: " + topVon + " bis " + topBis + "\nY: " + leftVon + " bis " + leftBis);
+		
+		/* Wenn Mauskoardinaten innerhlab des Bildes liegen , dann Pin setzten & zeigen*/
+		if((Ereignis.clientX >= topVon && Ereignis.clientX <= topBis) && (Ereignis.clientY >= leftVon && Ereignis.clientY <= leftBis)) {		
+			document.all.mapLayer.style.left = Ereignis.clientX - 8;
+			document.all.mapLayer.style.top = Ereignis.clientY - 8;
+			document.all.mapLayer.style.visibility = "visible";
+		}
+		/* Sonst Fehlermeldung & Pin verstecken */
+		else {
+			document.all.mapLayer.style.visibility = "hidden";
+			alert("Sorry, Pins nur auf der Map setzen!");
+		}
+	  }
+	  /* FireFox & Co. */
+	  else if(document.getElementById) {
+	  	topVon = document.getElementById("mapFrame").offsetLeft;
+		dummy = document.getElementById("mapFrame").style.width.replace("px","");
+		topBis = parseInt(topVon) + parseInt(dummy);
+		leftVon = document.getElementById("mapFrame").offsetTop;
+		dummy = document.getElementById("mapFrame").style.height.replace("px","");
+		leftBis = parseInt(leftVon) + parseInt(dummy);
+		// alert("X: " + topVon + " bis " + topBis + "\nY: " + leftVon + " bis " + leftBis);
+
+		if((Ereignis.clientX >= topVon && Ereignis.clientX <= topBis) && (Ereignis.clientY >= leftVon && Ereignis.clientY <= leftBis)) {		
+			document.getElementById("mapLayer").style.left = (Ereignis.clientX - 8) + "px";
+			document.getElementById("mapLayer").style.top = (Ereignis.clientY - 8) + "px";
+			document.getElementById("mapLayer").style.visibility = "visible";
+		}
+		else {
+			document.getElementById("mapLayer").style.visibility = "hidden";
+			alert("Sorry, Pins nur auf der Map setzen!");
+		}			
+	  }	  
+	}
+	document.onmousedown = Mausklick;
+  </script>  
+ </head>
+ <body onLoad="init()">
+  <div id="border" align="center" style="width:100%; height:100%">
+   <div id="mapFrame" align="center" style="position:relative; width:530px; height:700; border:2px solid #FF0000; background-image:url(de_map.jpg); background-repeat:no-repeat;  overflow:hidden; cursor:pointer; float:"></div>
+   <div id="mapLayer" style="position:absolute; width:10px; height:10px; border:2px solid #FF0000; visibility:hidden;"></div>
+    <b>Klick irgendwo auf der Karte um ein Pin zu setzen!<br />Das setzen von Pins ist nur auf der Karte erlaubt.</b>
+  </div>
+ </body>  
+</html>

@@ -1,0 +1,39 @@
+<html>
+ <head><title>OpenBox v1.0</title>
+ 	<script type="text/javascript">
+ 		function openMe()
+ 		{
+				document.getElementById("openBoxK").style.display = "block";
+ 		} 		
+ 	</script>
+ <head>
+  <body>
+   <div name="mainBox" id="mainBox" style="width:700px; height:400px; margin-top:50px; margin-left:500px; border:2px solid red; z-index:1;">
+   	<div name="topBox" id="topBox" style="width:690px; height:90px; border:1px dashed blue; float:left; z-index:1;">
+   		<div style="z-index:1;"><input type="radio" name="kk" id="kk" value="rechnung" onClick=""> per Rechnung</div>
+   		<div style="z-index:1;"><input type="radio" name="kk" id="kk" value="nachname" onClick=";"> per Nachname</div>
+   		<div style="z-index:1;"><input type="radio" name="kk" id="kk" value="kreditKarte" onClick="javascript:openMe();"> per KreditKarte</div>
+  	</div>
+  	
+  	<div name="openBox" id="openBox" style="width:690px; border:1px dashed green; float:left; z-index:1;">
+  		<div name="openBoxK" id="openBoxK" align="center" style="display:none; z-index:10;">
+  			<li>KreditKarte</li>
+  			<li>Text 2</li>
+  			<li>Text 3</li>
+  			<li>Text 4</li>
+  			<li>Text 5</li>
+  			<li>Text 6</li>
+  			<li>Text 7</li>
+  			<li>Text 8</li>
+  			<li>KreditKarte</li>
+  		</div>
+  	</div>  
+  		
+   	<div name="bottomBox" id="bottomBox" style="width:690px; height:90px; border:1px dashed blue; float:left; z-index:1;">
+   		<div style="z-index:1;">Text Text Text Text Text Text Text Text Text Text Text Text</div>
+   		<div style="z-index:1;">Text Text Text Text Text Text Text Text Text Text Text Text</div>
+   		<div style="z-index:1;">Text Text Text Text Text Text Text Text Text Text Text Text</div>
+  	</div>
+   </div>  
+  </body>
+</html>
